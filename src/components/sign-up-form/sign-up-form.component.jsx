@@ -90,10 +90,7 @@ const SignUpForm = () => {
           value={confirmPassword}
         />
 
-        <Button buttonType='inverted' type='submit'>
-          {" "}
-          Signup
-        </Button>
+        <Button type='submit'>Signup</Button>
       </form>
     </div>
   );
