@@ -17,7 +17,6 @@ const Navigation = () => {
   console.log("currentUser: ---> ", currentUser);
   return (
     <Fragment>
-      {/* asdsa */}
       <div className='navigation'>
         <Link className='logo-container' to='/'>
           <CrownLogo />
