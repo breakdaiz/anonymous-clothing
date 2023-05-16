@@ -16,7 +16,13 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const middlWares = [process.env.NODE_ENV !== "production" && logger].filter(
   Boolean
 );
-const composedEnhancers = compose(applyMiddleware(...middlWares));
+
+const composeEnhancers =
+  (process.env.NODE_ENV !== "production" &&
+    window &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
+const composedEnhancers = composeEnhancers(applyMiddleware(...middlWares));
 
 // root-reducer
 
