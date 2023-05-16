@@ -12,8 +12,10 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-const middlWares = [logger];
+//value should be production or developement
+const middlWares = [process.env.NODE_ENV !== "production" && logger].filter(
+  Boolean
+);
 const composedEnhancers = compose(applyMiddleware(...middlWares));
 
 // root-reducer
