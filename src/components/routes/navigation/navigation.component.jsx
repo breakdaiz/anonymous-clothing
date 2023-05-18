@@ -13,15 +13,17 @@ import {
   NavLink,
 } from "./navigation.styles.jsx";
 
+import { useDispatch } from "react-redux";
 import CartIcon from "../../cart-icon/cart-icon.component";
 import CartDropdown from "../../cart-dropdown/cart-dropdown.component";
-
-import { signOutUser } from "../../../utils/firebase/firebase.utils";
+import { signOutStart } from "../../../store/user/user.action";
 
 const Navigation = () => {
   const currentUser = useSelector(selectCurrentUser);
   const isCartOpen = useSelector(selectIsCartOpen);
+  const dispatch = useDispatch();
 
+  const onSignOutHandler = () => dispatch(signOutStart());
   // console.log("currentUser: ---> ", currentUser);
   return (
     <Fragment>
@@ -32,7 +34,7 @@ const Navigation = () => {
         <NavLinks>
           <NavLink to='shop'>SHOP</NavLink>
           {currentUser ? (
-            <NavLink as='span' onClick={signOutUser}>
+            <NavLink as='span' onClick={onSignOutHandler}>
               SIGN OUT
             </NavLink>
           ) : (
